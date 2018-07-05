@@ -41,6 +41,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.projects.nyinyihtunlwin.routeplanner.R;
 import com.projects.nyinyihtunlwin.routeplanner.data.vo.RouteVO;
 import com.projects.nyinyihtunlwin.routeplanner.utils.CommonConstants;
+import com.projects.nyinyihtunlwin.routeplanner.utils.ConfigUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,7 @@ public class HomeActivity extends AppCompatActivity
 
     @BindView(R.id.tv_current_amount)
     TextView tvCurrentAmount;
+
 
     private GoogleMap mMap;
     private List<RouteVO> routeVOList;
@@ -109,6 +111,7 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     private void initializeRouteData() {
@@ -131,6 +134,12 @@ public class HomeActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            System.exit(0);
         }
     }
 
@@ -154,14 +163,17 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+/*
         if (id == R.id.nav_route_list) {
             Intent intentToRouteList = RouteListActivity.newIntent(HomeActivity.this);
             startActivity(intentToRouteList);
-        } else if (id == R.id.nav_share) {
+        } else*/
+        if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_logout) {
+            ConfigUtils.getInstance().saveCurrentUser("");
+            Intent intentToHome = LoginActivity.newIntent(HomeActivity.this);
+            startActivity(intentToHome);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -297,4 +309,5 @@ public class HomeActivity extends AppCompatActivity
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
 }

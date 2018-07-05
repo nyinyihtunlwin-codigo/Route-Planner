@@ -45,6 +45,7 @@
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.RouteListActivity"
