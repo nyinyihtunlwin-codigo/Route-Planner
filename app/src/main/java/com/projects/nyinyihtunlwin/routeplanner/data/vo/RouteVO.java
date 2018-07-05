@@ -8,17 +8,21 @@ public class RouteVO {
     private double lat;
     private double lng;
     private String currentAmount;
+    private int code;
+    private boolean isDone;
 
     public RouteVO() {
     }
 
-    public RouteVO(String id, String name, String type, double lat, double lng, String currentAmount) {
+    public RouteVO(String id, String name, String type, double lat, double lng, String currentAmount, int code, boolean isDone) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.lat = lat;
         this.lng = lng;
         this.currentAmount = currentAmount;
+        this.code = code;
+        this.isDone = isDone;
     }
 
     public String getId() {
@@ -67,5 +71,21 @@ public class RouteVO {
 
     public void setCurrentAmount(String currentAmount) {
         this.currentAmount = currentAmount;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
     }
 }

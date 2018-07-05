@@ -45,10 +45,14 @@
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.RouteListActivity"
             android:label="@string/title_activity_route_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ScannerActivity"
+            android:label="@string/title_activity_scanner"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
