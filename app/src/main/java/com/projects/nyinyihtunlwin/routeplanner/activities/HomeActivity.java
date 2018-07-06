@@ -48,8 +48,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
-public class HomeActivity extends AppCompatActivity
+public class HomeActivity extends BaseActivity
         implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, GoogleMap.OnMarkerClickListener, View.OnClickListener, GoogleMap.OnMapClickListener {
 
     public static final Intent newIntent(Context context) {
@@ -63,8 +65,8 @@ public class HomeActivity extends AppCompatActivity
     @BindView(R.id.btn_show_route)
     Button btnShowRouote;
 
-    @BindView(R.id.btn_scan_code)
-    Button btnScanCode;
+    @BindView(R.id.btn_check_in)
+    Button btnCheckIn;
 
     @BindView(R.id.tv_name_location)
     TextView tvLocationName;
@@ -78,6 +80,8 @@ public class HomeActivity extends AppCompatActivity
     private RouteVO mCurrentRoute;
     private Marker currentMarker = null;
 
+    private Realm mRealm;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +91,11 @@ public class HomeActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mRealm = Realm.getDefaultInstance();
+
         initializeRouteData();
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -103,28 +111,42 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    /*    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);*/
 
     }
 
     private void initializeRouteData() {
-        routeVOList = new ArrayList<>();
-        routeVOList.add(new RouteVO("1", "Novotel Hotel", CommonConstants.TYPE_PICK, 16.820370, 96.131991, "1,000,000 MMK", 11111111, false));
-        routeVOList.add(new RouteVO("2", "Shwe Kaung Hot Pot", CommonConstants.TYPE_DROP, 16.821183, 96.129391, "500 MMK", 11111112, false));
-        routeVOList.add(new RouteVO("3", "KFC Junction", CommonConstants.TYPE_PICK, 16.817100, 96.131617, "3,500,000 MMK", 11111113, false));
-        routeVOList.add(new RouteVO("4", "Gripz(Junction Square)", CommonConstants.TYPE_DROP, 16.817736, 96.130395, "100 MMK", 11111114, false));
-        routeVOList.add(new RouteVO("5", "MRTV Earth Station", CommonConstants.TYPE_PICK, 16.816141, 96.132805, "4,300,000 MMK", 11111115, false));
-        routeVOList.add(new RouteVO("6", "Summer Place Hotel", CommonConstants.TYPE_DROP, 16.818013, 96.132649, "230 MMK", 11111116, false));
-        routeVOList.add(new RouteVO("7", "Max Energy Kyun Taw", CommonConstants.TYPE_PICK, 16.814937, 96.130247, "75,000,000 MMK", 11111117, false));
-        routeVOList.add(new RouteVO("8", "Drop Location (1)", CommonConstants.TYPE_DROP, 16.819802, 96.126658, "75,000,000 MMK", 11111118, false));
-        routeVOList.add(new RouteVO("9", "Pick Location (1)", CommonConstants.TYPE_PICK, 16.820238, 96.128623, "75,000,000 MMK", 11111119, false));
+        List<RouteVO> routeList = new ArrayList<>();
+        routeList.add(new RouteVO("1", "Novotel Hotel", CommonConstants.TYPE_PICK, 16.820370, 96.131991, "1,000,000 MMK", 11111111, true));
+        routeList.add(new RouteVO("2", "Shwe Kaung Hot Pot", CommonConstants.TYPE_DROP, 16.821183, 96.129391, "500 MMK", 11111112, false));
+        routeList.add(new RouteVO("3", "KFC Junction", CommonConstants.TYPE_PICK, 16.817100, 96.131617, "3,500,000 MMK", 11111113, false));
+        routeList.add(new RouteVO("4", "Gripz(Junction Square)", CommonConstants.TYPE_DROP, 16.817736, 96.130395, "100 MMK", 11111114, true));
+        routeList.add(new RouteVO("5", "MRTV Earth Station", CommonConstants.TYPE_PICK, 16.816141, 96.132805, "4,300,000 MMK", 11111115, false));
+        routeList.add(new RouteVO("6", "Summer Place Hotel", CommonConstants.TYPE_DROP, 16.818013, 96.132649, "230 MMK", 11111116, false));
+        routeList.add(new RouteVO("7", "Max Energy Kyun Taw", CommonConstants.TYPE_PICK, 16.814937, 96.130247, "75,000,000 MMK", 11111117, false));
+        routeList.add(new RouteVO("8", "Drop Location (1)", CommonConstants.TYPE_DROP, 16.819802, 96.126658, "75,000,000 MMK", 11111118, false));
+        routeList.add(new RouteVO("9", "Pick Location (1)", CommonConstants.TYPE_PICK, 16.820238, 96.128623, "75,000,000 MMK", 11111119, false));
+
+        RealmResults<RouteVO> routeResultList = mRealm.where(RouteVO.class).findAll();
+        if (routeResultList != null && routeResultList.size() != 0) {
+            routeVOList = routeResultList.subList(0, routeResultList.size());
+            Log.e("Rouotes", routeVOList.size() + "");
+        } else {
+            mRealm.beginTransaction();
+            for (RouteVO routeVO : routeList) {
+                mRealm.insertOrUpdate(routeVO);
+            }
+            mRealm.commitTransaction();
+            RealmResults<RouteVO> routeResults = mRealm.where(RouteVO.class).findAll();
+            routeVOList = routeResultList.subList(0, routeResults.size());
+        }
     }
 
     @Override
@@ -193,14 +215,26 @@ public class HomeActivity extends AppCompatActivity
 
             switch (routeVO.getType()) {
                 case CommonConstants.TYPE_DROP:
-                    mMap.addMarker(new MarkerOptions().position(marker)
-                            .icon(bitmapDescriptorFromVector(HomeActivity.this, R.drawable.ic_location_on_drop_24dp))
-                            .snippet(routeVO.getCurrentAmount()).title(routeVO.getName()));
+                    if (routeVO.isDone()) {
+                        mMap.addMarker(new MarkerOptions().position(marker)
+                                .icon(bitmapDescriptorFromVector(HomeActivity.this, R.drawable.ic_beenhere_24dp))
+                                .snippet(routeVO.getCurrentAmount()).title(routeVO.getName()));
+                    } else {
+                        mMap.addMarker(new MarkerOptions().position(marker)
+                                .icon(bitmapDescriptorFromVector(HomeActivity.this, R.drawable.ic_location_on_drop_24dp))
+                                .snippet(routeVO.getCurrentAmount()).title(routeVO.getName()));
+                    }
                     break;
                 case CommonConstants.TYPE_PICK:
-                    mMap.addMarker(new MarkerOptions().position(marker)
-                            .icon(bitmapDescriptorFromVector(HomeActivity.this, R.drawable.ic_location_on_pick_24dp))
-                            .snippet(routeVO.getCurrentAmount()).title(routeVO.getName()));
+                    if (routeVO.isDone()) {
+                        mMap.addMarker(new MarkerOptions().position(marker)
+                                .icon(bitmapDescriptorFromVector(HomeActivity.this, R.drawable.ic_beenhere_24dp))
+                                .snippet(routeVO.getCurrentAmount()).title(routeVO.getName()));
+                    } else {
+                        mMap.addMarker(new MarkerOptions().position(marker)
+                                .icon(bitmapDescriptorFromVector(HomeActivity.this, R.drawable.ic_location_on_pick_24dp))
+                                .snippet(routeVO.getCurrentAmount()).title(routeVO.getName()));
+                    }
                     break;
             }
 
@@ -218,7 +252,7 @@ public class HomeActivity extends AppCompatActivity
         mMap.setOnMapClickListener(this);
 
         btnShowRouote.setOnClickListener(this);
-        btnScanCode.setOnClickListener(this);
+        btnCheckIn.setOnClickListener(this);
     }
 
 
@@ -259,10 +293,9 @@ public class HomeActivity extends AppCompatActivity
                 mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
                 break;
-            case R.id.btn_scan_code:
-                new IntentIntegrator(this)
-                        .setCaptureActivity(ScannerActivity.class)
-                        .initiateScan();
+            case R.id.btn_check_in:
+                Intent intentToCheckIn = CheckInActivity.newIntent(HomeActivity.this, mCurrentRoute.getId());
+                startActivityForResult(intentToCheckIn, 1000);
                 break;
         }
     }
@@ -274,37 +307,32 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-            } else {
-                Log.e("Result : ", result.getContents());
-
-                if (currentMarker != null) {
-                    currentMarker.remove();
-                    currentMarker = null;
-                }
-
-                if (routeVOList.contains(mCurrentRoute)) {
-                    routeVOList.get(routeVOList.indexOf(mCurrentRoute)).setDone(true);
-                }
-
-                LatLng marker = new LatLng(mCurrentRoute.getLat(), mCurrentRoute.getLng());
-                mMap.addMarker(new MarkerOptions().position(marker)
-                        .icon(bitmapDescriptorFromVector(HomeActivity.this, R.drawable.ic_beenhere_24dp))
-                        .snippet(mCurrentRoute.getCurrentAmount()).title(mCurrentRoute.getName()));
-
-                CameraUpdate center =
-                        CameraUpdateFactory.newLatLng(new LatLng(16.817736, 96.130395));
-                CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
-
-
-                mMap.moveCamera(center);
-                mMap.animateCamera(zoom);
-
-                llMarkerAction.setVisibility(View.GONE);
+        if (resultCode == 1000) {
+            if (currentMarker != null) {
+                currentMarker.remove();
+                currentMarker = null;
             }
+            mRealm.beginTransaction();
+            if (routeVOList.contains(mCurrentRoute)) {
+                routeVOList.get(routeVOList.indexOf(mCurrentRoute)).setDone(true);
+                mRealm.copyToRealmOrUpdate(routeVOList.get(routeVOList.indexOf(mCurrentRoute)));
+            }
+            mRealm.commitTransaction();
 
+            LatLng marker = new LatLng(mCurrentRoute.getLat(), mCurrentRoute.getLng());
+            mMap.addMarker(new MarkerOptions().position(marker)
+                    .icon(bitmapDescriptorFromVector(HomeActivity.this, R.drawable.ic_beenhere_24dp))
+                    .snippet(mCurrentRoute.getCurrentAmount()).title(mCurrentRoute.getName()));
+
+            CameraUpdate center =
+                    CameraUpdateFactory.newLatLng(new LatLng(16.817736, 96.130395));
+            CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
+
+
+            mMap.moveCamera(center);
+            mMap.animateCamera(zoom);
+
+            llMarkerAction.setVisibility(View.GONE);
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

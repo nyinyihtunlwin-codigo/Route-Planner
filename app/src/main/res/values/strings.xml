@@ -18,4 +18,15 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_scanner">ScannerActivity</string>
     <string name="scanner">Code Scanner</string>
+    <string name="title_activity_check_in">Check In</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="type">Type</string>
+    <string name="scan_code">Scan qr code</string>
+
+    <string-array name="cash_types">
+        <item>CASH</item>
+        <item>E-LOAD</item>
+    </string-array>
 </resources>

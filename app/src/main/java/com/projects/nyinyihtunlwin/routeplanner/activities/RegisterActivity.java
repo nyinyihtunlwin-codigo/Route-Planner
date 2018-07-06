@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.projects.nyinyihtunlwin.routeplanner.R;
+import com.projects.nyinyihtunlwin.routeplanner.utils.ConfigUtils;
+import com.projects.nyinyihtunlwin.routeplanner.utils.ScreenUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +54,34 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_sign_up:
+                String email = etEmail.getText().toString();
+                String pass = etPassword.getText().toString();
+                String confirmPassword = etConfirmPassword.getText().toString();
+                if (!email.equals("")) {
+                    if (ScreenUtils.getInstance().validateEmailAddress(email)) {
+                        if (!pass.equals("")) {
+                            if (!confirmPassword.equals("")) {
+                                if (pass.equals(confirmPassword)) {
+                                    ConfigUtils.getInstance().saveCurrentUser(email);
+                                    Intent intentToHome = HomeActivity.newIntent(RegisterActivity.this);
+                                    startActivity(intentToHome);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Passwords don't match.", Toast.LENGTH_SHORT).show();
+                                    etConfirmPassword.setText("");
+                                }
+                            } else {
+                                etConfirmPassword.setError("Confirm Password.");
+                            }
+
+                        } else {
+                            etPassword.setError("Enter password.");
+                        }
+                    } else {
+                        etEmail.setError("Invalid email.");
+                    }
+                } else {
+                    etEmail.setError("Enter email.");
+                }
                 break;
             case R.id.tv_sign_in:
                 Intent intentToLogin = LoginActivity.newIntent(RegisterActivity.this);

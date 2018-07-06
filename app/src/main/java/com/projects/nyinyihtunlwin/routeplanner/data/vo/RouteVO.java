@@ -1,14 +1,27 @@
 package com.projects.nyinyihtunlwin.routeplanner.data.vo;
 
-public class RouteVO {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
+public class RouteVO extends RealmObject{
+
+    @Required
+    @PrimaryKey
     private String id;
+
     private String name;
+
     private String type;
+
     private double lat;
+
     private double lng;
+
     private String currentAmount;
+
     private int code;
+
     private boolean isDone;
 
     public RouteVO() {

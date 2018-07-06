@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "name": "Novotel Hotel",
+    "type": "PICK",
+    "lat": 16.820370,
+    "lng": 96.131991,
+    "currentAmount": "1,000,000 MMK",
+    "code": "11111111",
+    "done": false
+  },
+  {
+    "id": "2",
+    "name": "Shwe Kaung Hot Pot",
+    "type": "DROP",
+    "lat": 16.821183,
+    "lng": 96.129391,
+    "currentAmount": "500 MMK",
+    "code": "11111112",
+    "done": false
+  },
+  {
+    "id": "3",
+    "name": "KFC Junction",
+    "type": "PICK",
+    "lat": 16.817100,
+    "lng": 96.131617,
+    "currentAmount": "3,500,000 MMK",
+    "code": "11111113",
+    "done": false
+  },
+  {
+    "id": "4",
+    "name": "Gripz(Junction Square)",
+    "type": "DROP",
+    "lat": 16.817736,
+    "lng": 96.130395,
+    "currentAmount": "100 MMK",
+    "code": "11111114",
+    "done": false
+  },
+  {
+    "id": "5",
+    "name": "MRTV Earth Station",
+    "type": "PICK",
+    "lat": 16.816141,
+    "lng": 96.132805,
+    "currentAmount": "4,300,000 MMK",
+    "code": "11111115",
+    "done": false
+  },
+  {
+    "id": "6",
+    "name": "Summer Place Hotel",
+    "type": "DROP",
+    "lat": 16.818013,
+    "lng": 96.132649,
+    "currentAmount": "230 MMK",
+    "code": "11111116",
+    "done": false
+  },
+  {
+    "id": "7",
+    "name": "Max Energy Kyun Taw",
+    "type": "PICK",
+    "lat": 16.814937,
+    "lng": 96.130247,
+    "currentAmount": "75,000,000 MMK",
+    "code": "11111117",
+    "done": false
+  },
+  {
+    "id": "8",
+    "name": "Drop Location (1)",
+    "type": "DROP",
+    "lat": 16.819802,
+    "lng": 96.126658,
+    "currentAmount": "75,000,000 MMK",
+    "code": "11111118",
+    "done": false
+  },
+  {
+    "id": "9",
+    "name": "Pick Location (1)",
+    "type": "PICK",
+    "lat": 16.820238,
+    "lng": 96.128623,
+    "currentAmount": "75,000,000 MMK",
+    "code": "11111119",
+    "done": false
+  }
+]

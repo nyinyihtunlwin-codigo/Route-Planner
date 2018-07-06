@@ -75,13 +75,13 @@
                     android:text="Show Route" />
 
                 <Button
-                    android:id="@+id/btn_scan_code"
+                    android:id="@+id/btn_check_in"
                     style="@style/PrimaryBorderButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_weight="1"
-                    android:text="Scan Code" />
+                    android:text="Check in" />
             </LinearLayout>
 
 

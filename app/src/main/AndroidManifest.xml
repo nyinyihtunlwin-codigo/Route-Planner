@@ -54,7 +54,13 @@
         <activity
             android:name=".activities.ScannerActivity"
             android:label="@string/title_activity_scanner"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.CheckInActivity"
+            android:label="@string/title_activity_check_in"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
