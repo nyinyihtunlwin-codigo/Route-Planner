@@ -8,7 +8,8 @@ import com.projects.nyinyihtunlwin.routeplanner.RoutePlannerApp;
 public class ConfigUtils {
 
     private static final String KEY_EMAIL = "KEY_EMAIL";
-    private static final String KEY_PASSWORD = "KEY_PASSWORD";
+    private static final String KEY_CASH_AMOUNT = "KEY_CASH_AMOUNT";
+    private static final String KEY_ELOAD_AMOUNT = "KEY_ELOAD_AMOUNT";
 
     private static ConfigUtils mObjInstance;
 
@@ -33,4 +34,20 @@ public class ConfigUtils {
         return mSharedPreferences.getString(KEY_EMAIL, "");
     }
 
+    public void saveCurrentCashAmount(long cashAmount) {
+        mSharedPreferences.edit().putLong(KEY_CASH_AMOUNT, cashAmount).apply();
+    }
+
+    public Long loadCurrentCashAmount() {
+        return mSharedPreferences.getLong(KEY_CASH_AMOUNT, -1);
+    }
+
+
+    public void saveCurrentEloadAmount(long eloadAmount) {
+        mSharedPreferences.edit().putLong(KEY_ELOAD_AMOUNT, eloadAmount).apply();
+    }
+
+    public Long loadCurrentEloadAmount() {
+        return mSharedPreferences.getLong(KEY_ELOAD_AMOUNT, -1);
+    }
 }
