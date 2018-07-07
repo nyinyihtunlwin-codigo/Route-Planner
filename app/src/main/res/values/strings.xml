@@ -30,4 +30,7 @@
         <item>E-LOAD</item>
     </string-array>
     <string name="title_activity_profile">Profile</string>
+    <string name="eload">E-LOAD</string>
+    <string name="cash">CASH</string>
+    <string name="logout">Logout</string>
 </resources>

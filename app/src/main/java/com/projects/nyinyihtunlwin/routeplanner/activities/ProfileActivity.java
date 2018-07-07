@@ -17,18 +17,24 @@ import com.projects.nyinyihtunlwin.routeplanner.utils.ConfigUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final Intent newIntent(Context context) {
         Intent intent = new Intent(context, ProfileActivity.class);
         return intent;
     }
 
-    @BindView(R.id.lb_cash)
-    TextView lbCash;
+    @BindView(R.id.tv_cash)
+    TextView tvCash;
 
-    @BindView(R.id.lb_eload)
-    TextView lbEload;
+    @BindView(R.id.tv_eload)
+    TextView tvEload;
+
+    @BindView(R.id.tv_current_user_email)
+    TextView tvCurrentUserEmail;
+
+    @BindView(R.id.tv_logout)
+    TextView tvLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +49,10 @@ public class ProfileActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        lbCash.setText(String.valueOf(ConfigUtils.getInstance().loadCurrentCashAmount()));
-        lbEload.setText(String.valueOf(ConfigUtils.getInstance().loadCurrentEloadAmount()));
+        tvCurrentUserEmail.setText(ConfigUtils.getInstance().loadCurrentUser());
+        tvCash.setText(String.valueOf(ConfigUtils.getInstance().loadCurrentCashAmount()));
+        tvEload.setText(String.valueOf(ConfigUtils.getInstance().loadCurrentEloadAmount()));
+        tvLogout.setOnClickListener(this);
 
     }
 
@@ -59,4 +67,14 @@ public class ProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_logout:
+                ConfigUtils.getInstance().saveCurrentUser("");
+                Intent intentToHome = LoginActivity.newIntent(ProfileActivity.this);
+                startActivity(intentToHome);
+                break;
+        }
+    }
 }
