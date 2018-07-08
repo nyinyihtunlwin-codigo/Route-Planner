@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.projects.nyinyihtunlwin.routeplanner.R;
 
-public class RouteListActivity extends AppCompatActivity {
+public class RouteListActivity extends BaseActivity {
 
     public static final Intent newIntent(Context context) {
         Intent intent = new Intent(context, RouteListActivity.class);

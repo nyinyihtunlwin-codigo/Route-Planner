@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AgentActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_medium_2"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_current_user"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_current_user" />
+
+        <TextView
+            android:id="@+id/tv_current_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/civ_current_user"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:gravity="center"
+            android:text="Mr.Agent"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_regular_2x" />
+
+        <TextView
+            android:id="@+id/tv_current_user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_current_user_name"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:text="agent@gmail.com"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_regular" />
+
+        <Button
+            android:id="@+id/btn_to_rq_balance"
+            style="@style/PrimaryBorderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_current_user_email"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:text="Request Balance" />
+
+        <Button
+            android:id="@+id/btn_generate_code"
+            style="@style/PrimaryBorderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_to_rq_balance"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:text="Generate Code" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            style="@style/PrimaryBorderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_generate_code"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:text="@string/logout" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

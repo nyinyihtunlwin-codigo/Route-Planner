@@ -29,8 +29,47 @@
         <item>CASH</item>
         <item>E-LOAD</item>
     </string-array>
+
+    <string-array name="encode_types">
+        <item>QR_CODE</item>
+        <item>CODE_39</item>
+        <item>CODE_93</item>
+        <item>CODE_128</item>
+        <item>EAN_8</item>
+        <item>EAN_13</item>
+    </string-array>
+
+    <string-array name="output_height">
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+        <item>110</item>
+        <item>120</item>
+        <item>130</item>
+        <item>140</item>
+        <item>150</item>
+        <item>160</item>
+        <item>170</item>
+        <item>180</item>
+        <item>190</item>
+        <item>200</item>
+    </string-array>
+
     <string name="title_activity_profile">Profile</string>
     <string name="eload">E-LOAD</string>
     <string name="cash">CASH</string>
     <string name="logout">Logout</string>
+    <string name="title_activity_agent">Agent</string>
+    <string name="request_form">Balance Request Form</string>
+    <string name="title_activity_balance_request">Request Balance</string>
+    <string name="submit">Submit</string>
+    <string name="title_activity_generate_code">Generate Code</string>
+    <string name="encode_type">ENCODE TYPE :</string>
+    <string name="output_height">BARCODE HEIGHT :</string>
+    <string name="dp">dp</string>
+    <string name="generate_code">Generate Code</string>
+    <string name="enter_generate_code">Enter text to generate...</string>
 </resources>

@@ -63,7 +63,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             if (!confirmPassword.equals("")) {
                                 if (pass.equals(confirmPassword)) {
                                     ConfigUtils.getInstance().saveCurrentUser(email);
-                                    Intent intentToHome = HomeActivity.newIntent(RegisterActivity.this);
+                                    Intent intentToHome = LoginActivity.newIntent(RegisterActivity.this);
                                     startActivity(intentToHome);
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Passwords don't match.", Toast.LENGTH_SHORT).show();

@@ -41,8 +41,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
 
         if (!ConfigUtils.getInstance().loadCurrentUser().equals("")) {
-            Intent intentToHome = HomeActivity.newIntent(LoginActivity.this);
-            startActivity(intentToHome);
+            String email = ConfigUtils.getInstance().loadCurrentUser();
+            if (email.equals("abc@gmail.com")) {
+                Intent intentToHome = HomeActivity.newIntent(LoginActivity.this);
+                startActivity(intentToHome);
+            } else if (email.equals("xyz@gmail.com")) {
+                Intent intentToAgent = AgentActivity.newIntent(LoginActivity.this);
+                startActivity(intentToAgent);
+            }
         }
 
         // Initialize butterknife
@@ -61,9 +67,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 if (!email.equals("")) {
                     if (ScreenUtils.getInstance().validateEmailAddress(email)) {
                         if (!pass.equals("")) {
-                            ConfigUtils.getInstance().saveCurrentUser(email);
-                            Intent intentToHome = HomeActivity.newIntent(LoginActivity.this);
-                            startActivity(intentToHome);
+                            if (email.equals("abc@gmail.com")) {
+                                ConfigUtils.getInstance().saveCurrentUser(email);
+                                Intent intentToHome = HomeActivity.newIntent(LoginActivity.this);
+                                startActivity(intentToHome);
+                            } else if (email.equals("xyz@gmail.com")) {
+                                ConfigUtils.getInstance().saveCurrentUser(email);
+                                Intent intentToAgent = AgentActivity.newIntent(LoginActivity.this);
+                                startActivity(intentToAgent);
+                            } else {
+                                ScreenUtils.getInstance().showToast(getApplicationContext(), "No Account Found!");
+                            }
+
                         } else {
                             etPassword.setError("Enter password.");
                         }

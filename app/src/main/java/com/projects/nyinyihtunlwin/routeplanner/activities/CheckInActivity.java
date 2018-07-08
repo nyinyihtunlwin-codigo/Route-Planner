@@ -35,7 +35,7 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CheckInActivity extends AppCompatActivity implements View.OnClickListener {
+public class CheckInActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String KEY_LOCATION_NAME = "KEY_LOCATION_NAME";
 

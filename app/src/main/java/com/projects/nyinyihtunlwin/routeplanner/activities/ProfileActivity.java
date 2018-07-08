@@ -18,7 +18,7 @@ import com.projects.nyinyihtunlwin.routeplanner.utils.ConfigUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class ProfileActivity extends BaseActivity implements View.OnClickListener {
 
     public static final Intent newIntent(Context context) {
         Intent intent = new Intent(context, ProfileActivity.class);

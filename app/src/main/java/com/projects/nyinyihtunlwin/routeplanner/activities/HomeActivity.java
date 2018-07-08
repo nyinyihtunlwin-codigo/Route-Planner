@@ -132,10 +132,10 @@ public class HomeActivity extends BaseActivity
 
     private void intializeCash() {
         if (ConfigUtils.getInstance().loadCurrentCashAmount() == -1) {
-            ConfigUtils.getInstance().saveCurrentCashAmount(10000000);
+            ConfigUtils.getInstance().saveCurrentCashAmount(5000000);
         }
         if (ConfigUtils.getInstance().loadCurrentEloadAmount() == -1) {
-            ConfigUtils.getInstance().saveCurrentEloadAmount(10000000);
+            ConfigUtils.getInstance().saveCurrentEloadAmount(5000000);
         }
     }
 
