@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.projects.nyinyihtunlwin.routeplanner.R;
+import com.projects.nyinyihtunlwin.routeplanner.utils.CommonConstants;
 import com.projects.nyinyihtunlwin.routeplanner.utils.ConfigUtils;
 
 import butterknife.BindView;
@@ -36,6 +37,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @BindView(R.id.tv_logout)
     TextView tvLogout;
 
+    @BindView(R.id.tv_cash_available)
+    TextView tvCashAvailable;
+
+    @BindView(R.id.tv_cash_used)
+    TextView tvCashUsed;
+
+    @BindView(R.id.tv_eload_available)
+    TextView tvEloadAvailable;
+
+    @BindView(R.id.tv_eload_used)
+    TextView tvEloadUsed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +61,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
+        Long avaiCash = ConfigUtils.getInstance().loadCurrentCashAmount();
+        Long avaiEload = ConfigUtils.getInstance().loadCurrentEloadAmount();
         tvCurrentUserEmail.setText(ConfigUtils.getInstance().loadCurrentUser());
-        tvCash.setText(String.valueOf(ConfigUtils.getInstance().loadCurrentCashAmount()));
-        tvEload.setText(String.valueOf(ConfigUtils.getInstance().loadCurrentEloadAmount()));
+        tvCashAvailable.setText(String.valueOf(avaiCash));
+        tvEloadAvailable.setText(String.valueOf(avaiEload));
+
+        tvCash.setText(String.valueOf(CommonConstants.INI_CASH));
+        tvEload.setText(String.valueOf(CommonConstants.INI_ELOAD));
+
+        tvCashUsed.setText(String.valueOf(CommonConstants.INI_CASH - avaiCash));
+        tvEloadUsed.setText(String.valueOf(CommonConstants.INI_ELOAD - avaiEload));
+
         tvLogout.setOnClickListener(this);
 
     }

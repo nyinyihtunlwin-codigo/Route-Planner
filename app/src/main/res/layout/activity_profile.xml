@@ -20,136 +20,289 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/secondary_text" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cv_1"
-            android:layout_width="match_parent"
-            android:layout_height="136dp"
-            android:layout_marginEnd="@dimen/margin_xlarge"
-            android:layout_marginStart="@dimen/margin_xlarge"
-            android:layout_marginTop="100dp"
-            android:elevation="1dp" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_profile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:elevation="2dp"
-            android:src="@drawable/ic_current_user" />
-
-        <TextView
-            android:id="@+id/tv_current_user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/iv_profile"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:elevation="2dp"
-            android:gravity="center_horizontal"
-            android:text="David Beckham"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/text_regular_2x" />
-
-        <TextView
-            android:id="@+id/tv_current_user_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_current_user_name"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:elevation="2dp"
-            android:gravity="center_horizontal"
-            android:text="email@gmail.com"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/text_regular" />
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cv_1"
-            android:layout_marginEnd="@dimen/margin_xlarge"
-            android:layout_marginStart="@dimen/margin_xlarge"
-            android:layout_marginTop="@dimen/margin_medium_2"
-            android:elevation="1dp">
-
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/margin_medium_2">
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/kbz_bank" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_1"
+                android:layout_width="match_parent"
+                android:layout_height="136dp"
+                android:layout_marginEnd="@dimen/margin_xlarge"
+                android:layout_marginStart="@dimen/margin_xlarge"
+                android:layout_marginTop="100dp"
+                android:elevation="1dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:elevation="2dp"
+                android:src="@drawable/ic_current_user" />
+
+            <TextView
+                android:id="@+id/tv_current_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_profile"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:elevation="2dp"
+                android:gravity="center_horizontal"
+                android:text="David Beckham"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <TextView
+                android:id="@+id/tv_current_user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_current_user_name"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:elevation="2dp"
+                android:gravity="center_horizontal"
+                android:text="email@gmail.com"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv_1"
+                android:layout_marginEnd="@dimen/margin_xlarge"
+                android:layout_marginStart="@dimen/margin_xlarge"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:elevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium_2"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/margin_medium_2">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:gravity="center"
+                        android:padding="@dimen/margin_medium"
                         android:text="@string/cash"
-                        android:textColor="@color/primary_text" />
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/text_regular_2x" />
 
-                    <TextView
-                        android:id="@+id/tv_cash"
-                        android:layout_width="0dp"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/secondary_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="100000000000"
-                        android:textColor="@color/green" />
+                        android:layout_marginTop="@dimen/margin_medium_2"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Start"
+                            android:textColor="@color/primary_text" />
+
+                        <TextView
+                            android:id="@+id/tv_cash"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="100000000000"
+                            android:textColor="@color/green" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium_2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Available"
+                            android:textColor="@color/primary_text" />
+
+                        <TextView
+                            android:id="@+id/tv_cash_available"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="100000000000"
+                            android:textColor="@color/orange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium_2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Used"
+                            android:textColor="@color/primary_text" />
+
+                        <TextView
+                            android:id="@+id/tv_cash_used"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="100000000000"
+                            android:textColor="@color/orange" />
+
+                    </LinearLayout>
                 </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv_2"
+                android:layout_marginEnd="@dimen/margin_xlarge"
+                android:layout_marginStart="@dimen/margin_xlarge"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:elevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium_2"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/margin_medium_2">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:gravity="center"
+                        android:padding="@dimen/margin_medium"
                         android:text="@string/eload"
-                        android:textColor="@color/primary_text" />
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/text_regular_2x" />
 
-                    <TextView
-                        android:id="@+id/tv_eload"
-                        android:layout_width="0dp"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/secondary_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="100000000000"
-                        android:textColor="@color/orange" />
+                        android:layout_marginTop="@dimen/margin_medium_2"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Start"
+                            android:textColor="@color/primary_text" />
+
+                        <TextView
+                            android:id="@+id/tv_eload"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="100000000000"
+                            android:textColor="@color/green" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium_2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Available"
+                            android:textColor="@color/primary_text" />
+
+                        <TextView
+                            android:id="@+id/tv_eload_available"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="100000000000"
+                            android:textColor="@color/orange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium_2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Used"
+                            android:textColor="@color/primary_text" />
+
+                        <TextView
+                            android:id="@+id/tv_eload_used"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="100000000000"
+                            android:textColor="@color/orange" />
+
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/tv_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/margin_medium_2"
-            android:text="@string/logout"
-            android:textColor="@color/accent"
-            android:textSize="@dimen/text_regular_3x" />
-    </RelativeLayout>
-
+            <TextView
+                android:id="@+id/tv_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv_3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:text="@string/logout"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_regular_3x" />
+        </RelativeLayout>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>
