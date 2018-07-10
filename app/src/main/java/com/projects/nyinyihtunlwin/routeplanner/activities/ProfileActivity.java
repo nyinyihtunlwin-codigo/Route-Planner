@@ -64,14 +64,15 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         Long avaiCash = ConfigUtils.getInstance().loadCurrentCashAmount();
         Long avaiEload = ConfigUtils.getInstance().loadCurrentEloadAmount();
         tvCurrentUserEmail.setText(ConfigUtils.getInstance().loadCurrentUser());
+
         tvCashAvailable.setText(String.valueOf(avaiCash));
         tvEloadAvailable.setText(String.valueOf(avaiEload));
 
         tvCash.setText(String.valueOf(CommonConstants.INI_CASH));
         tvEload.setText(String.valueOf(CommonConstants.INI_ELOAD));
 
-        tvCashUsed.setText(String.valueOf(CommonConstants.INI_CASH - avaiCash));
-        tvEloadUsed.setText(String.valueOf(CommonConstants.INI_ELOAD - avaiEload));
+        tvCashUsed.setText(String.valueOf(ConfigUtils.getInstance().loadUsedCashAmount()));
+        tvEloadUsed.setText(String.valueOf(ConfigUtils.getInstance().loadUsedEloadAmount()));
 
         tvLogout.setOnClickListener(this);
 

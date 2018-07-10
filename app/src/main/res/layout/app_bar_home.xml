@@ -47,8 +47,9 @@
             android:layout_alignParentBottom="true"
             android:background="@color/white"
             android:orientation="vertical"
-            android:padding="@dimen/margin_medium"
-            android:visibility="gone">
+
+            android:visibility="gone"
+            android:padding="@dimen/margin_medium">
 
             <TextView
                 android:id="@+id/tv_name_location"

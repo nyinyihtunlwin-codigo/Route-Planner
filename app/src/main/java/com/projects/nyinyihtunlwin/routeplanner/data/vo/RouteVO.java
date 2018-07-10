@@ -4,7 +4,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class RouteVO extends RealmObject{
+public class RouteVO extends RealmObject {
 
     @Required
     @PrimaryKey
@@ -24,10 +24,15 @@ public class RouteVO extends RealmObject{
 
     private boolean isDone;
 
+    private long reqAmount;
+
+    private String reqType;
+
     public RouteVO() {
     }
 
-    public RouteVO(String id, String name, String type, double lat, double lng, String currentAmount, int code, boolean isDone) {
+    public RouteVO(String id, String name, String type, double lat, double lng, String currentAmount, int code, boolean isDone
+            , long reqAmount, String reqType) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -36,7 +41,10 @@ public class RouteVO extends RealmObject{
         this.currentAmount = currentAmount;
         this.code = code;
         this.isDone = isDone;
+        this.reqAmount = reqAmount;
+        this.reqType = reqType;
     }
+
 
     public String getId() {
         return id;
@@ -100,5 +108,21 @@ public class RouteVO extends RealmObject{
 
     public void setDone(boolean done) {
         isDone = done;
+    }
+
+    public long getReqAmount() {
+        return reqAmount;
+    }
+
+    public void setReqAmount(long reqAmount) {
+        this.reqAmount = reqAmount;
+    }
+
+    public String getReqType() {
+        return reqType;
+    }
+
+    public void setReqType(String reqType) {
+        this.reqType = reqType;
     }
 }

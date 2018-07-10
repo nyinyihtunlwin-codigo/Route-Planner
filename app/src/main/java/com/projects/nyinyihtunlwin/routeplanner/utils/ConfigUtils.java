@@ -9,7 +9,9 @@ public class ConfigUtils {
 
     private static final String KEY_EMAIL = "KEY_EMAIL";
     private static final String KEY_CASH_AMOUNT = "KEY_CASH_AMOUNT";
+    private static final String KEY__USED_CASH_AMOUNT = "KEY_USED_CASH_AMOUNT";
     private static final String KEY_ELOAD_AMOUNT = "KEY_ELOAD_AMOUNT";
+    private static final String KEY_USED_ELOAD_AMOUNT = "KEY_USED_ELOAD_AMOUNT";
 
     private static ConfigUtils mObjInstance;
 
@@ -49,5 +51,21 @@ public class ConfigUtils {
 
     public Long loadCurrentEloadAmount() {
         return mSharedPreferences.getLong(KEY_ELOAD_AMOUNT, -1);
+    }
+
+    public void saveUsedCashAmount(long usedCashAmount) {
+        mSharedPreferences.edit().putLong(KEY__USED_CASH_AMOUNT, usedCashAmount).apply();
+    }
+
+    public Long loadUsedCashAmount() {
+        return mSharedPreferences.getLong(KEY__USED_CASH_AMOUNT, 0);
+    }
+
+    public void saveUsedEloadAmount(long usedEloadAmount) {
+        mSharedPreferences.edit().putLong(KEY_USED_ELOAD_AMOUNT, usedEloadAmount).apply();
+    }
+
+    public Long loadUsedEloadAmount() {
+        return mSharedPreferences.getLong(KEY_USED_ELOAD_AMOUNT, 0);
     }
 }

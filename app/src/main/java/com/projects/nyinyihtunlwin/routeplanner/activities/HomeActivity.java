@@ -132,24 +132,24 @@ public class HomeActivity extends BaseActivity
 
     private void intializeCash() {
         if (ConfigUtils.getInstance().loadCurrentCashAmount() == -1) {
-            ConfigUtils.getInstance().saveCurrentCashAmount(5000000);
+            ConfigUtils.getInstance().saveCurrentCashAmount(10000000);
         }
         if (ConfigUtils.getInstance().loadCurrentEloadAmount() == -1) {
-            ConfigUtils.getInstance().saveCurrentEloadAmount(5000000);
+            ConfigUtils.getInstance().saveCurrentEloadAmount(10000000);
         }
     }
 
     private void initializeRouteData() {
         List<RouteVO> routeList = new ArrayList<>();
-        routeList.add(new RouteVO("1", "Novotel Hotel", CommonConstants.TYPE_PICK, 16.820370, 96.131991, "1,000,000 s", 11111111, false));
-        routeList.add(new RouteVO("2", "Shwe Kaung Hot Pot", CommonConstants.TYPE_DROP, 16.821183, 96.129391, "500 MMK", 11111112, false));
-        routeList.add(new RouteVO("3", "KFC Junction", CommonConstants.TYPE_PICK, 16.817100, 96.131617, "3,500,000 MMK", 11111113, false));
-        routeList.add(new RouteVO("4", "Gripz(Junction Square)", CommonConstants.TYPE_DROP, 16.817736, 96.130395, "100 MMK", 11111114, false));
-        routeList.add(new RouteVO("5", "MRTV Earth Station", CommonConstants.TYPE_PICK, 16.816141, 96.132805, "4,300,000 MMK", 11111115, false));
-        routeList.add(new RouteVO("6", "Summer Place Hotel", CommonConstants.TYPE_DROP, 16.818013, 96.132649, "230 MMK", 11111116, false));
-        routeList.add(new RouteVO("7", "Max Energy Kyun Taw", CommonConstants.TYPE_PICK, 16.814937, 96.130247, "75,000,000 MMK", 11111117, false));
-        routeList.add(new RouteVO("8", "Drop Location (1)", CommonConstants.TYPE_DROP, 16.819802, 96.126658, "75,000,000 MMK", 11111118, false));
-        routeList.add(new RouteVO("9", "Pick Location (1)", CommonConstants.TYPE_PICK, 16.820238, 96.128623, "75,000,000 MMK", 11111119, false));
+        routeList.add(new RouteVO("1", "Novotel Hotel", CommonConstants.TYPE_PICK, 16.820370, 96.131991, "1,000,000 s", 11111111, false, 1500000, "ELOAD"));
+        routeList.add(new RouteVO("2", "Shwe Kaung Hot Pot", CommonConstants.TYPE_DROP, 16.821183, 96.129391, "500 MMK", 11111112, false, 1500000, "CASH"));
+        routeList.add(new RouteVO("3", "KFC Junction", CommonConstants.TYPE_PICK, 16.817100, 96.131617, "3,500,000 MMK", 11111113, false, 2500000, "ELOAD"));
+        routeList.add(new RouteVO("4", "Gripz(Junction Square)", CommonConstants.TYPE_DROP, 16.817736, 96.130395, "100 MMK", 11111114, false, 2500000, "CASH"));
+        routeList.add(new RouteVO("5", "MRTV Earth Station", CommonConstants.TYPE_PICK, 16.816141, 96.132805, "4,300,000 MMK", 11111115, false, 3500000, "ELOAD"));
+        routeList.add(new RouteVO("6", "Summer Place Hotel", CommonConstants.TYPE_DROP, 16.818013, 96.132649, "230 MMK", 11111116, false, 4500000, "CASH"));
+        routeList.add(new RouteVO("7", "Max Energy Kyun Taw", CommonConstants.TYPE_PICK, 16.814937, 96.130247, "75,000,000 MMK", 11111117, false, 1500000, "ELOAD"));
+        routeList.add(new RouteVO("8", "Drop Location (1)", CommonConstants.TYPE_DROP, 16.819802, 96.126658, "75,000,000 MMK", 11111118, false, 1500000, "CASH"));
+        routeList.add(new RouteVO("9", "Pick Location (1)", CommonConstants.TYPE_PICK, 16.820238, 96.128623, "75,000,000 MMK", 11111119, false, 1000000, "ELOAD"));
 
         RealmResults<RouteVO> routeResultList = mRealm.where(RouteVO.class).findAll();
         if (routeResultList != null && routeResultList.size() != 0) {
@@ -272,6 +272,7 @@ public class HomeActivity extends BaseActivity
 
         btnShowRouote.setOnClickListener(this);
         btnCheckIn.setOnClickListener(this);
+
     }
 
 
@@ -290,7 +291,7 @@ public class HomeActivity extends BaseActivity
             if (marker.getTitle().equals(route.getName())) {
                 mCurrentRoute = route;
                 tvLocationName.setText(route.getName());
-                tvCurrentAmount.setText(route.getType());
+                tvCurrentAmount.setText("Requested Amount   :   " + route.getReqAmount() + " (" + route.getReqType() + ")");
                 if (route.isDone()) {
                     llMarkerAction.setVisibility(View.GONE);
                 } else {

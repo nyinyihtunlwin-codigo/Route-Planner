@@ -22,7 +22,7 @@
     <string name="enter_amount">Enter amount</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
-    <string name="type">Type</string>
+
     <string name="scan_code">Scan qr code</string>
 
     <string-array name="cash_types">
@@ -72,4 +72,7 @@
     <string name="dp">dp</string>
     <string name="generate_code">Generate Code</string>
     <string name="enter_generate_code">Enter text to generate...</string>
+    <string name="update">Update</string>
+    <string name="amount">Amount : </string>
+    <string name="type">Type   : </string>
 </resources>
